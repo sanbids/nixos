@@ -1,0 +1,3 @@
+{ nixpks, ... }: {
+  imports = [ ./git ];
+}
