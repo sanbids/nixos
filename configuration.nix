@@ -109,6 +109,7 @@
       nwg-displays
       libsForQt5.qt5.qtquickcontrols2
       libsForQt5.qt5.qtgraphicaleffects
+      nix-prefetch-git
     ];
 
   fonts.packages = with pkgs; [

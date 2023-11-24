@@ -15,6 +15,8 @@
 
   home.file = { };
 
+  
+
   home.sessionVariables = { };
   home.enableNixpkgsReleaseCheck = false;
 
