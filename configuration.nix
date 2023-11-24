@@ -56,6 +56,8 @@
   services.gvfs.enable = true; # Mount, trash, and other functionalities
   services.tumbler.enable = true; # Thumbnail support for images
 
+  networking.nameservers = [ "3.3.3.3" "1.1.1.1" ];
+
   programs.zsh.enable = true;
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs;
