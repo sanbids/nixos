@@ -6,6 +6,7 @@
     ./development
     ./config
   ];
+
   home.username = "sanbid";
   home.homeDirectory = "/home/sanbid";
 
@@ -14,8 +15,6 @@
   ];
 
   home.file = { };
-
-  
 
   home.sessionVariables = { };
   home.enableNixpkgsReleaseCheck = false;

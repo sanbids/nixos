@@ -15,6 +15,9 @@
         {
           name = "hlissner/zsh-autopair";
         }
+        {
+          name = "zshzoo/cd-ls";
+        }
       ];
     };
 
