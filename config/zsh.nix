@@ -1,7 +1,15 @@
 { config, lib, pkgs, ... }: {
+
+
   programs.zsh = {
     enable = true;
     autocd = true;
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    historySubstringSearch = {
+      enable = true;
+    };
+    syntaxHighlighting.enable = true;
 
     zplug = {
       enable = true;
@@ -32,7 +40,7 @@
       export PATH=~/.bun/bin/:$PATH
       export QT_DEBUG_PLUGINS=1
       export OPENAI_API_KEY="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"
-       export PATH=~/.cargo/bin:$PATH
+
     '';
 
     shellAliases = {
@@ -57,54 +65,41 @@
     };
 
     initExtra = ''
-      export LS_COLORS="$(vivid generate $HOME/.config/vivid/colorscheme-lsd.yaml)"
-      ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
-        eval "$(zoxide init zsh)"
-        eval "$(starship init zsh)"
-        if [ -z "$TMUX" ]
-          then
-            tmux attach -t TMUX || tmux new -s TMUX
-            fi
+            export LS_COLORS="$(vivid generate $HOME/.config/vivid/colorscheme-lsd.yaml)"
+            ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+      #  ┬ ┬┌─┐┬┌┬┐┬┌┐┌┌─┐  ┌┬┐┌─┐┌┬┐┌─┐
+      #  │││├─┤│ │ │││││ ┬   │││ │ │ └─┐
+      #  └┴┘┴ ┴┴ ┴ ┴┘└┘└─┘  ─┴┘└─┘ ┴ └─┘
+      expand-or-complete-with-dots() {
+        echo -n "\e[31m…\e[0m"
+        zle expand-or-complete
+        zle redisplay
+      }
+      zle -N expand-or-complete-with-dots
+      bindkey "^I" expand-or-complete-with-dots
+
+
+       # ┌─┐┌─┐┬ ┬  ┌─┐┌─┐┌─┐┬    ┌─┐┌─┐┌┬┐┬┌─┐┌┐┌┌─┐
+       # ┌─┘└─┐├─┤  │  │ ││ ││    │ │├─┘ │ ││ ││││└─┐
+       # └─┘└─┘┴ ┴  └─┘└─┘└─┘┴─┘  └─┘┴   ┴ ┴└─┘┘└┘└─┘
+      setopt AUTOCD              # change directory just by typing its name
+      setopt PROMPT_SUBST        # enable command substitution in prompt
+      setopt MENU_COMPLETE       # Automatically highlight first element of completion menu
+      setopt LIST_PACKED		   # The completion menu takes less space.
+      setopt AUTO_LIST           # Automatically list choices on ambiguous completion.
+      setopt HIST_IGNORE_DUPS	   # Do not write events to history that are duplicates of previous events
+      setopt HIST_FIND_NO_DUPS   # When searching history don't display results already cycled through twice
+      setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
     '';
   };
-
-
-  # plugins = with pkgs; [
-  #   {
-  #     name = "zsh-syntax-highlighting";
-  #     src = fetchFromGitHub
-  #       {
-  #         owner = "zsh-users";
-  #         repo = "zsh-syntax-highlighting";
-  #         rev = "bb27265aeeb0a22fb77f1275118a5edba260ec47";
-  #         sha256 = "0vdj0saw0zr99w2p5148zgd0wljg6j3yc7ip3fsxn07bk42hxhm6";
-  #       };
-  #   }
-  #   {
-  #     name = "zsh-autopair";
-  #     src = fetchFromGitHub {
-  #       owner = "hlissner";
-  #       repo = "zsh-autopair";
-  #       rev = "396c38a7468458ba29011f2ad4112e4fd35f78e6";
-  #       sha256 = "0q9wg8jlhlz2xn08rdml6fljglqd1a2gbdp063c8b8ay24zz2w9x";
-  #     };
-  #   }
-  #
-  #   {
-  #     name = "zsh-vim-mode";
-  #     src = fetchFromGitHub {
-  #       owner = "jeffreytse";
-  #       repo = "zsh-vi-mode";
-  #       rev = "ea1f58ab9b1f3eac50e2cde3e3bc612049ef683b";
-  #       sha256 = "0bs5p6p5846hcgf3rb234yzq87rfjs18gfha9w0y0nf5jif23dy5";
-  #     };
-  #   }
-  #
-  # ];
-  #
 
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
   };
+  programs.zoxide.enableZshIntegration = true;
+  programs.starship.enableZshIntegration = true;
+  programs.dircolors.enableZshIntegration = true;
+  programs.kitty.shellIntegration.enableZshIntegration = true;
+
 }

@@ -11,8 +11,6 @@
     keybindings = {
       "ctrl+shift+c" = "copy_to_clipboard";
       "ctrl+shift+v" = "paste_from_clipboard";
-      "ctrl+shift+l" = "next_layout";
-      "ctrl+shift+t" = "launch --cwd=current --type=tab";
 
     };
     settings = {
@@ -26,6 +24,7 @@
       mouse_hide_wait = "3";
       default_pointer_shape = "arrow";
       show_hyperlink_targets = "yes";
+      clear_all_shortcuts = "yes";
     };
   };
 }
