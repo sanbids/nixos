@@ -8,6 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ./core/displayManager
+    ./system/virtualbox.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -112,6 +113,28 @@
       nix-prefetch-git
       fish
       bat
+      libinput-gestures
+      sway-audio-idle-inhibit
+      swayidle
+      polkit_gnome
+      copyq
+      mako
+      libsForQt5.dolphin
+      sway-contrib.grimshot
+      vlc
+      galculator
+      wpsoffice
+      imv
+      feh
+      blueman
+      pavucontrol
+      dunst
+      obsidian
+      spotify
+      woeusb
+      progress
+      tealdeer
+      eww
     ];
 
   fonts.packages = with pkgs; [
