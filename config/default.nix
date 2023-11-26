@@ -12,6 +12,10 @@
       source = ./hypr;
       recursive = true;
     };
+    "vivid" = {
+      source = ./vivid;
+      recursive = true;
+    };
 
     "wofi" = {
       source = ./wofi;
@@ -37,6 +41,11 @@
       source = ./fish;
       recursive = true;
     };
+  };
+
+  home.file."Wallpaper" = {
+    source = ./wallpaper;
+    recursive = true;
   };
 
 }
