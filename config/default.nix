@@ -8,7 +8,6 @@
   ];
 
   xdg.configFile = {
-
     "hypr" = {
       source = ./hypr;
       recursive = true;
@@ -38,6 +37,6 @@
       source = ./fish;
       recursive = true;
     };
-      };
+  };
 
-  }
+}
