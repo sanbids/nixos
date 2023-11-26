@@ -9,7 +9,6 @@
 
   xdg.configFile = {
 
-
     "hypr" = {
       source = ./hypr;
       recursive = true;
@@ -25,7 +24,20 @@
       recursive = true;
     };
 
+    "waybar" = {
+      source = ./waybar;
+      recursive = true;
+    };
 
-  };
+    "tmux" = {
+      source = ./tmux;
+      recursive = true;
+    };
 
-}
+    "fish" = {
+      source = ./fish;
+      recursive = true;
+    };
+      };
+
+  }

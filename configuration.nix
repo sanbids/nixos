@@ -36,8 +36,8 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.sanbid = {
     isNormalUser = true;
-    shell = pkgs.zsh;
-    extraGroups = [ "wheel" "networkManager" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.fish;
+    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
       tree
@@ -58,7 +58,7 @@
 
   networking.nameservers = [ "3.3.3.3" "1.1.1.1" ];
 
-  programs.zsh.enable = true;
+  programs.fish.enable = true;
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs;
     [
@@ -110,6 +110,8 @@
       libsForQt5.qt5.qtquickcontrols2
       libsForQt5.qt5.qtgraphicaleffects
       nix-prefetch-git
+      fish
+      bat
     ];
 
   fonts.packages = with pkgs; [

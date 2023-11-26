@@ -14,7 +14,8 @@
   home.packages = [
   ];
 
-  home.file = { };
+  home.file = {
+  };
 
   home.sessionVariables = { };
   home.enableNixpkgsReleaseCheck = false;
