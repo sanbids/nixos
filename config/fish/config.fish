@@ -159,11 +159,13 @@ alias mirrord 'sudo reflector --latest 50 --number 20 --sort delay --save /etc/p
 alias mirrors 'sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist'
 
 alias pacdiff 'sudo -H DIFFPROG=meld pacdiff'
-alias cc 'clear'
+alias c 'clear'
 alias Supdate  "sudo nixos-rebuild switch --flake ~/.dotfiles";
 alias Sinstall  "sudo nvim ~/.dotfiles/configuration.nix";
 alias Hupdate  "home-manager switch --flake ~/.dotfiles";
 alias Hinstall  "nvim ~/.dotfiles/home.nix";
+alias zzz 'nvim ~/.dotfiles/config/fish/config.fish'
+alias as 'NVIM_APPNAME=astronvim nvim'
 
 
 

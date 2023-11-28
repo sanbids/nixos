@@ -41,6 +41,13 @@
   #     };
   #   };
   # };
+
+
+  virtualisation.libvirtd.enable = true;
+  programs.dconf.enable = true;
+  programs.virt-manager.enable = true;
+
+  
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
@@ -58,12 +65,11 @@
   services.xserver.libinput.enable = true;
   programs.hyprland.enable = true;
   programs.hyprland.xwayland.enable = true;
-  programs.dconf.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.sanbid = {
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "networkmanager" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "docker" "libvirtd"  ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
       tree
@@ -170,6 +176,10 @@
       eww
       glib
       docker
+      lazygit
+      gdu
+      swww
+      python3Full
     ];
 
   fonts.packages = with pkgs; [
