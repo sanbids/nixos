@@ -6,28 +6,25 @@
     };
   };
 
-  home.pointerCursor = {
-    gtk.enable = true;
-    # x11.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Amber";
-    size = 32;
-  };
-
   gtk = {
     enable = true;
     font = {
       name = "source code pro 12";
     };
 
+    iconTheme = {
+      name = "Paper";
+      package = pkgs.paper-icon-theme;
+    };
+
     cursorTheme = {
-      name = "catppuccin-cursors";
-      package = pkgs.catppuccin-cursors;
+      name = "Bibata-Modern-Ice";
+      package = pkgs.bibata-cursors;
     };
 
     theme = {
-      name = "sweet";
-      package = pkgs.sweet;
+      name = "tokyo-night";
+      package = pkgs.tokyo-night-gtk;
     };
   };
 }

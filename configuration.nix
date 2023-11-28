@@ -12,10 +12,35 @@
   ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.configurationLimit = 5;
+   boot.loader.systemd-boot.enable = true;
+   boot.loader.efi.canTouchEfiVariables = true;
+   boot.loader.systemd-boot.configurationLimit = 5;
 
+  # Enable Grub bootloader and filesystems  
+  # boot = {
+  #   supportedFilesystems = [ "ntfs" "exfat" "mtpfs" ];
+  #   loader = {
+  #     efi = {
+  #       canTouchEfiVariables = true;
+  #       efiSysMountPoint = "/boot";
+  #     };
+  #     grub = {
+  #       enable = true;
+  #       configurationLimit = 5;
+  #       devices = [ "nodev" ];
+  #       efiSupport = true;
+  #       useOSProber = true;
+  #       extraEntries = ''
+  #         menuentry "Reboot" {
+  #           reboot
+  #         }
+  #         menuentry "Poweroff" {
+  #           halt
+  #         }
+  #       '';
+  #     };
+  #   };
+  # };
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
@@ -38,7 +63,7 @@
   users.users.sanbid = {
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "docker" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
       tree
@@ -58,6 +83,14 @@
   services.tumbler.enable = true; # Thumbnail support for images
 
   networking.nameservers = [ "3.3.3.3" "1.1.1.1" ];
+
+  virtualisation.docker.enable = true;
+
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
+
 
   programs.fish.enable = true;
   # List packages installed in system profile. To search, run:
@@ -135,6 +168,8 @@
       progress
       tealdeer
       eww
+      glib
+      docker
     ];
 
   fonts.packages = with pkgs; [
