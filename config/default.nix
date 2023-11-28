@@ -4,6 +4,7 @@
     ./zsh.nix
     ./kitty
     ./bash.nix
+    ./starship.nix
   ];
 
   xdg.configFile = {
@@ -39,14 +40,6 @@
     "fish" = {
       source = ./fish;
       recursive = true;
-    };
-
-    "starship.toml" = {
-      source = ./starship.toml;
-    };
-
-    "starship_cat.toml" = {
-      source = ./starship_cat.toml;
     };
 
   };
