@@ -41,11 +41,18 @@
       source = ./fish;
       recursive = true;
     };
+
+    "starship.toml" = {
+      source = ./starship.toml;
+    };
+
   };
 
   home.file."wallpaper" = {
     source = ./wallpaper;
     recursive = true;
   };
+
+
 
 }
