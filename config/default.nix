@@ -1,7 +1,6 @@
 { nixpkgs, config, ... }:
 {
   imports = [
-    ./starship.nix
     ./zsh.nix
     ./kitty
     ./bash.nix
@@ -44,6 +43,10 @@
 
     "starship.toml" = {
       source = ./starship.toml;
+    };
+
+    "starship_cat.toml" = {
+      source = ./starship_cat.toml;
     };
 
   };
