@@ -12,42 +12,15 @@
   ];
 
   # Use the systemd-boot EFI boot loader.
-   boot.loader.systemd-boot.enable = true;
-   boot.loader.efi.canTouchEfiVariables = true;
-   boot.loader.systemd-boot.configurationLimit = 5;
-
-  # Enable Grub bootloader and filesystems  
-  # boot = {
-  #   supportedFilesystems = [ "ntfs" "exfat" "mtpfs" ];
-  #   loader = {
-  #     efi = {
-  #       canTouchEfiVariables = true;
-  #       efiSysMountPoint = "/boot";
-  #     };
-  #     grub = {
-  #       enable = true;
-  #       configurationLimit = 5;
-  #       devices = [ "nodev" ];
-  #       efiSupport = true;
-  #       useOSProber = true;
-  #       extraEntries = ''
-  #         menuentry "Reboot" {
-  #           reboot
-  #         }
-  #         menuentry "Poweroff" {
-  #           halt
-  #         }
-  #       '';
-  #     };
-  #   };
-  # };
-
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
 
   virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
   programs.virt-manager.enable = true;
 
-  
+
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
@@ -69,7 +42,7 @@
   users.users.sanbid = {
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "networkmanager" "docker" "libvirtd"  ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
       tree
@@ -196,6 +169,8 @@
     jetbrains-mono
     (nerdfonts.override { fonts = [ "Hack" "DroidSansMono" ]; })
   ];
+
+  services.xserver.desktopManager.xfce.enable = true;
   security.polkit.enable = true;
   system.stateVersion = "23.11"; # Did you read the comment?
   nix.settings.experimental-features = "nix-command flakes";
